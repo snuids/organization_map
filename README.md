@@ -1,1 +1,2 @@
-# organization_map
+# Organization Map Generator
+
