@@ -4,7 +4,7 @@
 
 ```sh
 pip install organization-map
-
+```
 
 ## Dependencies
 
