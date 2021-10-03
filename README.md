@@ -1,5 +1,9 @@
 # Organization Map Generator
 
+## Dependencies
+
+* PIL
+
 ## Organization structure
 ```python
 orgs=[
