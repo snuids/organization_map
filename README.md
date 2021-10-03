@@ -1,8 +1,14 @@
 # Organization Map Generator
 
+## Installation
+
+```sh
+pip install organization-map
+
+
 ## Dependencies
 
-* PIL
+* PIL (pip install pillow)
 
 ## Organization structure
 ```python
