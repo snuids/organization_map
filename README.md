@@ -33,3 +33,42 @@ generator.generate_image(orgs).show()
 
 ![Screenshot](https://raw.githubusercontent.com/snuids/organization_map/master/media/Example.jpg?raw=true "Screenshot")
 
+## Multi Level
+```python
+orgs=[[{'id': '2',
+   'name': 'Father',
+   'labels': ['', '', ''],
+   'childs': [['22'], ['22', '23'], []],
+   'parents': [[], [], []],
+   'level': 0}],
+ [{'id': '22',
+   'name': 'Daughter',
+   'labels': ['111 %', '222 %', ''],
+   'childs': [[], [], []],
+   'parents': [['2'], ['2'], []],
+   'level': 1},
+  {'id': '23',
+   'name': 'Son',
+   'labels': ['', '223 %', ''],
+   'childs': [[], ['33'], []],
+   'parents': [[], ['2'], []],
+   'level': 1}],
+ [{'id': '33',
+   'name': 'Daughter 2',
+   'labels': ['', '2333 %', ''],
+   'childs': [[], [], []],
+   'parents': [[], ['23'], []],
+   'level': 2}]]
+```
+
+Code example:
+
+```python
+from organization_map import generator
+
+generator.generate_image(orgs,multi_level=True).show()
+```
+
+## Output
+
+![Screenshot](https://raw.githubusercontent.com/snuids/organization_map/master/media/Example2.jpg?raw=true "Screenshot")
