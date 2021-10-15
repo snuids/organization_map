@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 
 
-# git tag 1.0.1 -m "PyPi tag"
+# git tag 1.0.3 -m "PyPi tag"
 # git push --tags origin master
 # python setup.py sdist
 # twine upload dist/*
@@ -27,6 +27,7 @@ def generate_image(orgs,options={},multi_level=False):
 
 
     if multi_level:
+        parent_ht={}
         curY=0
         linkcolors=["red","green","blue"]
 
@@ -36,7 +37,7 @@ def generate_image(orgs,options={},multi_level=False):
             startx=shiftx
             for org in line:
                 dr.rectangle([(startx+paddingX,curY+paddingY),(startx+sizeBoxX-paddingX,curY+sizeBoxY-paddingY-arrowY)]
-                             ,outline=defaultcolor,fill=org.get("fill",'white'),width=2)
+                             ,outline=defaultColor,fill=org.get("fill",'white'),width=2)
                 org["startArrowX"]=(startx+paddingX+startx+sizeBoxX-paddingX)/2
                 org["startArrowY"]=curY+sizeBoxY-paddingY-arrowY
                 org["endArrowY"]=curY+paddingY
@@ -44,7 +45,7 @@ def generate_image(orgs,options={},multi_level=False):
 
                 startx+=(sizeBoxX+shiftx)
                 w, h = dr.textsize(org["name"])
-                dr.text((org["startArrowX"]-(w/2),curY-(h/2)+paddingY+(sizeBoxY-2*paddingY-arrowY)/2), org["name"], org.get("color",textcolor),align='center')
+                dr.text((org["startArrowX"]-(w/2),curY-(h/2)+paddingY+(sizeBoxY-2*paddingY-arrowY)/2), org["name"], org.get("color",textColor),align='center')
 
                 orgs_ht[org["id"]]=org
             curY+=sizeBoxY
