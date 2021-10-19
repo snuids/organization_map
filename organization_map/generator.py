@@ -56,7 +56,7 @@ def generate_image(orgs,options={},multi_level=False):
                 h=h*len(org["name"].split("\n"))
                 
                 text_length=max([font.getsize(_) for _ in org["name"].split("\n")])[0]/2
-                dr.text((org["startArrowX"]-int(text_length),(curY+paddingY)+(sizeBoxY-paddingY-arrowY-(paddingY))/2-(h/2)), org["name"], org.get("color",textcolor)
+                dr.text((org["startArrowX"]-int(text_length),(curY+paddingY)+(sizeBoxY-paddingY-arrowY-(paddingY))/2-(h/2)), org["name"], org.get("color",textColor)
                             ,align='center',font=font)
                 orgs_ht[org["id"]]=org
             curY+=sizeBoxY
