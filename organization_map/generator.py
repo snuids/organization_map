@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 
 # git tag 1.0.3 -m "PyPi tag"
@@ -8,6 +8,14 @@ from PIL import Image, ImageDraw
 
 def generate_image(orgs,options={},multi_level=False):
 
+    fontSize=options.get("fontSize",11)
+    fontPath=options.get("fontPath",None)
+
+    if fontPath != None:
+        font = ImageFont.truetype(font="Poppins-Regular.ttf",size=fontSize)
+    else:
+        font = ImageFont.load_default()
+        
     sizeBoxX=options.get("sizeBoxX",200)
     sizeBoxY=options.get("sizeBoxY",120)
     paddingX=options.get("paddingX",10)
@@ -44,9 +52,12 @@ def generate_image(orgs,options={},multi_level=False):
 
 
                 startx+=(sizeBoxX+shiftx)
-                w, h = dr.textsize(org["name"])
-                dr.text((org["startArrowX"]-(w/2),curY-(h/2)+paddingY+(sizeBoxY-2*paddingY-arrowY)/2), org["name"], org.get("color",textColor),align='center')
-
+                w, h = font.getsize(org["name"])
+                h=h*len(org["name"].split("\n"))
+                
+                text_length=max([font.getsize(_) for _ in org["name"].split("\n")])[0]/2
+                dr.text((org["startArrowX"]-int(text_length),(curY+paddingY)+(sizeBoxY-paddingY-arrowY-(paddingY))/2-(h/2)), org["name"], org.get("color",textcolor)
+                            ,align='center',font=font)
                 orgs_ht[org["id"]]=org
             curY+=sizeBoxY
 

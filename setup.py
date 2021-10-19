@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
   name = 'organization_map',
   packages = ['organization_map'], # this must be the same as the name above
-  version = '1.0.3',
+  version = '1.0.4',
   description = 'Creates an organization map image',
   long_description=long_description,
   long_description_content_type="text/markdown",
